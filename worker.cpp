@@ -18,11 +18,7 @@ void Worker::exit(){
 }
 
 // --- PROCESS ---
-// Start processing data.
 void Worker::process() {
-    // allocate resources using new here
-    //qDebug("Hello World!");
-
     int nIdx = 0;
     for(int i = this->nFrom; i <= this->nTo; i++){
         if(bAbort)
@@ -40,15 +36,11 @@ void Worker::process() {
         emit numberProcessed(this->nFrom, this->nTo, i);
         nIdx++;
     }
-
-
     emit finished();
 }
 
 int Worker::calcSum(int nNum){
-
     int nSum = 1;
-
     for(int i = 2; i <= qSqrt(nNum); i++){
         if(nNum % i == 0){
             nSum += i + (nNum / i);
